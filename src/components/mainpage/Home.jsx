@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const Home = () => {
     return (
         <Fragment>
-            <div className='   container-fluid my-4'>
+            <div className='   container my-4'>
                 <div className='row w-100 p-0 mx-0 my-4 align-items-center first-home-section'>
                     <div className='col-md-8  '>
                         <div className='mozayede-section m-2'>

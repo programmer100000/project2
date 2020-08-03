@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment} from 'react';
 
 const Login = () => {
+ 
     return (
         <Fragment>
-           <p>
-               login page
-           </p>
+
+           login
+
         </Fragment>
     );
 };
