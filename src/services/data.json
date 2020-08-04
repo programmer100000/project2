@@ -2,26 +2,26 @@
     "test": [{
             "id": 1,
             "title": "pro1",
-            "description": "testtttttttttttt ttttttttttt",
+            "description": "توضیح محصول 1....",
             "imageUrl": "./img/logo192.png",
             "count": 0
         },
         {
             "id": 2,
             "title": "pro2",
-            "description": "testtttttttttttt ttttttttttt",
+            "description": "توضیح محصول 2....",
             "imageUrl": "./img/logo192.png",
             "count": 0
         }, {
             "id": 3,
             "title": "pro3",
-            "description": "testtttttttttttt ttttttttttt",
+            "description": "توضیح محصول 3....",
             "imageUrl": "./img/logo192.png",
             "count": 0
         }, {
             "id": 4,
             "title": "pro4",
-            "description": "testtttttttttttt ttttttttttt",
+            "description": "توضیح محصول 4....",
             "imageUrl": "./img/logo192.png",
             "count": 0
         }

@@ -5,7 +5,7 @@ import Products from '../components/product/Product';
 import Home from '../components/mainpage/Home';
 import Profile from '../components/user/Profile'
 import Login from '../components/user/Login';
-import Card from '../components/product/Card';
+import Cart from '../components/product/Cart';
 
 
 const RubbanShop = () => {
@@ -15,7 +15,7 @@ const RubbanShop = () => {
                 <Route path='/login' component={Login} />
                 <Route path='/profile' component={Profile} />
                 <Route path='/products' component={Products} />
-                <Route path='/card' component={Card} />
+                <Route path='/cart' component={Cart} />
                 <Route path='/' exact component={Home} />
             </Switch>
         </Master>

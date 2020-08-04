@@ -185,14 +185,24 @@ h4 {
 
 
 /* Footer End */
+
+
 /* Home Page  */
-.mozayede-section,.newest-products-section,.discounts-section,.inner-categories-section{
-    background-color:#958db3 ;
-}
-.inner-mozayede-item,.news-item,.newest-products-item,.inner-discounts-item,.inner-categories-item{
-    background-color:#6c6099 ;
+
+.mozayede-section,
+.newest-products-section,
+.discounts-section,
+.inner-categories-section {
+    background-color: #958db3;
 }
 
+.inner-mozayede-item,
+.news-item,
+.newest-products-item,
+.inner-discounts-item,
+.inner-categories-item {
+    background-color: #6c6099;
+}
 
 
 /* Home Page End */

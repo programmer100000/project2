@@ -13,7 +13,7 @@ const Header = () => {
                 <Link to='/' className="text-white" >صفحه اصلی</Link>
             </li>
             <li className="px-3 py-2">
-                <a href='#' className="text-white">صفحه1</a>
+                <Link to='products' className="text-white">محصولات</Link>
             </li>
             <li className="px-3 py-2">
                 <a href='#' className="text-white">صفحه 2</a>
@@ -51,8 +51,8 @@ const Header = () => {
 
                         <div className='col-8 main-nav-menu d-flex text-right'>
                             <button
-                                 className="mob-main-nav-menu-btn d-block d-sm-none p-1 border-0 text-white"
-                            onClick={mainNavOnClick}
+                                className="mob-main-nav-menu-btn d-block d-sm-none p-1 border-0 text-white"
+                                onClick={mainNavOnClick}
                             >
                                 <i className='fa fa-bars'></i>
                             </button>
@@ -70,11 +70,13 @@ const Header = () => {
                             </button>
                             <button
                                 className='main-nav-item main-nav-shopping-card p-1 border-0 text-white '>
-                                <i className='fa fa-shopping-cart'></i>
+                                <Link className='text-white' to='/cart'>
+                                    <i className='fa fa-shopping-cart'></i>
+                                </Link>
                             </button>
                         </div>
 
-                        <div id='main-nav-sidenav'  className={getSideNav ? 'showSideNav' : null}>
+                        <div id='main-nav-sidenav' className={getSideNav ? 'showSideNav' : null}>
                             <div id='main-nav-sidenav-header'>
                                 <a href='#'>
                                     <img src='./img/logo192.png' />
@@ -92,7 +94,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-        </Fragment>
+        </Fragment >
     );
 };
 
