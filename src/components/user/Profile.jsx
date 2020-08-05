@@ -1,19 +1,18 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 
 const Profile = () => {
     const [getLname, setLname] = useState('');
     const [getFname, setFname] = useState('');
     const [getMobilenumber, setMobilenumber] = useState('');
-
+    const [getUsersInfo, setUsersInfo] = useState([]);
     const validator = useRef(
         new SimpleReactValidator({
             messages: {
                 required: 'پر کردن این فیلد الزامی میباشد',
                 min: 'کمتر از 5 کاراکتر نباید باشد',
-                mobile1: 'شماره موبایل نوشته شده صحیح نمی باشد',
             },
-            element: (message) => <div style={{ color: 'red' }}>{message}</div>,
+            element: (message) => <div className="text-right" style={{ color: 'red' }}>{message}</div>,
         })
     );
     let users = [];
@@ -26,7 +25,7 @@ const Profile = () => {
             usersInfoObj = JSON.parse(localStorage.usersInfo);
             for (let index = 0; index < usersInfoObj.length; index++) {
                 let element = usersInfoObj[index];
-                if (element[2] == user[2]) {
+                if (element[2] === user[2]) {
                     flag = true;
                 }
             }
@@ -39,24 +38,24 @@ const Profile = () => {
             users.push(user);
             localStorage.setItem('usersInfo', JSON.stringify(users));
         }
+        if (localStorage.usersInfo) {
+            let usersInfo = JSON.parse(localStorage.usersInfo);
+            setUsersInfo(usersInfo);
+        }
     };
-
-
-    var arr = [];
-    if (localStorage.usersInfo) {
-        let usersInfo = JSON.parse(localStorage.usersInfo);
-        arr = usersInfo;
-    }
-
-
-   
-
+    useEffect(() => {
+        if (localStorage.usersInfo) {
+            let usersInfo = JSON.parse(localStorage.usersInfo);
+            setUsersInfo(usersInfo);
+        }
+    }, []);
+  
     return (
         <Fragment>
             <div className="container">
                 <div className="row p-4">
                     <div className="col-md-6">
-                        <form onSubmit={handleSubmit} >
+                        <form  >
                             <div className="form-group">
                                 <input className="form-control" name="fname" value={getFname} type="text" id="fname" placeholder="نام" required
                                     onChange={(e) => {
@@ -66,40 +65,45 @@ const Profile = () => {
                                         );
                                     }}
                                 />
-                                   {validator.current.message(
-                                'fname',
-                                getFname,
-                                'required'
-                            )}
+                                {validator.current.message(
+                                    'fname',
+                                    getFname,
+                                    'required'
+                                )}
                             </div>
                             <div className="form-group">
                                 <input className="form-control" name="lname" type="text" id="lname" placeholder="نام خانوادگی" required
                                     onChange={(e) => {
                                         setLname(e.target.value);
+                                        validator.current.showMessageFor(
+                                            'lname'
+                                        );
                                     }}
                                 />
+                                {validator.current.message(
+                                    'lname',
+                                    getLname,
+                                    'required'
+                                )}
                             </div>
                             <div className="form-group">
-                                <input className="form-control" name="mobile1" value={getMobilenumber} type="text" pattern="09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}" id="mobile" placeholder="موبایل" required
+                                <input className="form-control" name="mobile" value={getMobilenumber} type="text" pattern="09(0[1-2]|1[0-9]|3[0-9]|2[0-1])-?[0-9]{3}-?[0-9]{4}" id="mobile" placeholder="موبایل" required
                                     onChange={(e) => {
                                         setMobilenumber(e.target.value);
-                                        
+
                                         validator.current.showMessageFor(
-                                            'mobile1'
+                                            'mobile'
                                         );
-                                    
                                     }}
                                 />
-                                 {validator.current.message(
-                                'mobile',
-                                getMobilenumber,
-                                'mobile1',
-                               
-                                
-                            )}
+                                {validator.current.message(
+                                    'mobile',
+                                    getMobilenumber,
+                                    'required'
+                                )}
                             </div>
                             <div className="form-group mb-0 text-center">
-                                <button className="btn btn-success btn-block" type="submit" > ثبت  </button>
+                                <button className="btn btn-success btn-block"  onClick={handleSubmit} > ثبت  </button>
                             </div>
                         </form>
                     </div>
@@ -113,14 +117,13 @@ const Profile = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {arr.map((row) => (
+                                {getUsersInfo.map((row) => (
                                     <tr key={row[2]}>
                                         <td>{row[0]}</td>
                                         <td>{row[1]}</td>
                                         <td>{row[2]}</td>
                                     </tr>
                                 ))}
-
                             </tbody>
                         </table>
                     </div>

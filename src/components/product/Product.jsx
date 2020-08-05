@@ -5,6 +5,7 @@ const Product = () => {
     const product = useSelector((state) => state.product);
     let card = [];
     const handleAdd = (product) => {
+        
         let product1 = [product.id, product.title, product.description, product.imageUrl, 1];
         let flag = false;
         let pros = '';
