@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Product = () => {
     const product = useSelector((state) => state.product);
@@ -75,7 +76,9 @@ const Product = () => {
                                     src={product.imageUrl}
                                     alt=""
                                 />
-                                <span>نام محصول : {product.title} </span>
+                                <Link to={`/product/${product.id}`}>
+                                نام محصول : {product.title}
+                                </Link>
                                 <span>توضیحات : {product.description} </span>
                                 <button onClick={() => { handleAdd(product) }} className="btn btn-primary" >افزودن به سبد خرید</button>
                             </div>
